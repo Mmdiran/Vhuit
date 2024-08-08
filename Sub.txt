@@ -1,0 +1,140 @@
+{
+  "dns": {
+    "hosts": {
+      "domain:googleapis.cn": "googleapis.com"
+    },
+    "servers": [
+      "1.0.0.1"
+    ]
+  },
+  "inbounds": [
+    {
+      "listen": "127.0.0.1",
+      "port": 10808,
+      "protocol": "socks",
+      "settings": {
+        "auth": "noauth",
+        "udp": true,
+        "userLevel": 8
+      },
+      "sniffing": {
+        "destOverride": [
+          "http",
+          "tls"
+        ],
+        "enabled": true,
+        "routeOnly": false
+      },
+      "tag": "socks"
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": 10809,
+      "protocol": "http",
+      "settings": {
+        "userLevel": 8
+      },
+      "tag": "http"
+    }
+  ],
+  "log": {
+    "loglevel": "debug"
+  },
+  "outbounds": [
+    {
+      "mux": {
+        "concurrency": 2,
+        "enabled": true,
+        "xudpConcurrency": 2,
+        "xudpProxyUDP443": "reject"
+      },
+      "protocol": "vmess",
+      "settings": {
+        "vnext": [
+          {
+            "address": "108.162.192.63",
+            "port": 80,
+            "users": [
+              {
+                "alterId": 0,
+                "encryption": "",
+                "flow": "",
+                "id": "b2413a5a-d5d0-4447-b6d7-6dbcd2989a35",
+                "level": 8,
+                "security": "none"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "",
+        "wsSettings": {
+          "headers": {
+            "Host": "dl2.127.0.0.1.востейcontrol.控制.kонтроль農達懲罰.cводкаhо.wonkacapitano.buzz."
+          },
+          "path": "/vmess"
+        }
+      },
+      "tag": "proxy"
+    },
+    {
+      "protocol": "freedom",
+      "settings": {},
+      "tag": "direct"
+    },
+    {
+      "protocol": "blackhole",
+      "settings": {
+        "response": {
+          "type": "http"
+        }
+      },
+      "tag": "block"
+    }
+  ],
+  "policy": {
+    "levels": {
+      "8": {
+        "connIdle": 300,
+        "downlinkOnly": 1,
+        "handshake": 4,
+        "uplinkOnly": 1
+      }
+    },
+    "system": {
+      "statsOutboundUplink": true,
+      "statsOutboundDownlink": true
+    }
+  },
+  "remarks": "🇹🇷@Artemisvpn1",
+  "routing": {
+    "domainStrategy": "IPIfNonMatch",
+    "rules": [
+      {
+        "ip": [
+          "1.0.0.1"
+        ],
+        "outboundTag": "proxy",
+        "port": "53"
+      },
+      {
+        "ip": [
+          "223.5.5.5"
+        ],
+        "outboundTag": "direct",
+        "port": "53"
+      },
+      {
+        "outboundTag": "proxy",
+        "port": "0-65535"
+      }
+    ]
+  },
+  "stats": {}
+}
+
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTptcHMzRndtRGpMcldhT1Zn@series-a2.samanehha.co:443#%F0%9F%87%AC%F0%9F%87%A7
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp1MTdUM0J2cFlhYWl1VzJj@series-a2-mec.varzesh360.co:443#%F0%9F%87%AE%F0%9F%87%AA
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpCb2cwRUxtTU05RFN4RGRR@series-a2-me.samanehha.co:443#%F0%9F%87%A7%F0%9F%87%AD
